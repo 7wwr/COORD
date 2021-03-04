@@ -1,0 +1,41 @@
+做贪吃蛇时遇到了关于坐标的难点，通过学习得知
+上实例：
+#include <stdio.h>
+#include <windows.h>
+void gotoxy(int x, int y) {
+    COORD pos = {x,y};
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(hOut, pos);
+}
+
+int main() {
+    int x,y;
+    gotoxy(2,2);
+    printf("hello,world!");
+    system("pause");
+    return 0;
+}
+
+可以使用gotoxy（）；
+百度文库中对coord的解释为：
+COORD是Windows API中定义的一种结构，表示一个字符在控制台屏幕上的坐标。其定义为：
+
+typedef struct _COORD {
+SHORT X; // horizontal coordinate
+SHORT Y; // vertical coordinate
+} COORD;
+
+其中想想x,y就是在使用gotoxy后光标所在的位置 ，而后面的两句
+
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleCursorPosition(hOut, pos);
+————————————————
+其他用法：
+coord_cartesian 默认情况，指定参数则控制图形特定区域放大显示。
+coord_fixed 图形伸缩变换
+coord_flip 横纵坐标位置转换
+coord_polar 弯曲横纵坐标
+coord_map 将地图变成球状展示
+coord_trans 转化数据
+coord系列函数只影响图形展示，不影响内部数据的值。即使用原数据作图，再对图形进行变动。
+（以上用法通过度娘可知）
