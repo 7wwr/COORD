@@ -1,0 +1,56 @@
+近来在做飞机大战，学习了setpos（）函数
+setpos函数全名为SetWindowPos
+函数名：
+　　SetWindowPos
+头文件：
+　　winuser.h
+函数原型：
+　　BOOL SetWindowPos
+　　(
+　　HWND hWnd, //窗口句柄
+　　HWND hWndInsertAfter, //排列顺序的句柄
+　　int X, //水平坐标
+　　int Y, //垂直坐标
+　　int cx, //宽
+　　int cy, //高
+　　UINT uFlags //窗口定位标识
+　　);
+说明：
+　　这个函数能改变窗口的大小、位置和设置子窗口、弹出窗口或顶层窗口的排列顺序。 
+　　返回值：
+　　BOOL，如果返回值非零表示成功，返回零表示失败。错误信息请参看GetLastError函数。
+参数表：
+　　参数 类型及说明 
+　　hwnd HWND，欲定位的窗口句柄 
+　　hWndInsertAfter HWND，置于hwnd前面的窗口句柄。这个参数必须是窗口的句柄或是下面的值之一： 　　　HWND_BOTTOM 将窗口置于其它所有窗口的底部 
+　　HWND_NOTOPMOST 将窗口置于其它所有窗口的顶部，并位于任何最顶部窗口的后面。如果这个窗口非顶部窗口，这个标记对该窗口并不产生影响 
+　　HWND_TOP 将窗口置于它所有窗口的顶部 
+　　HWND_TOPMOST 将窗口置于其它所有窗口的顶部，并位于任何最顶部窗口的前面。即使这个窗口不是活动窗口，也维持最顶部状态
+x：　
+　　int，指定窗口新的X坐标
+Y：　　
+　　int，指定窗口新的Y坐标
+cx：　　
+　　int，指定窗口新的宽度
+cy：　　
+　　int，指定窗口新的高度
+wFlags：
+　　UINT，指定窗口状态和位置的标记。这个参数使用下面值的组合： SWP_DRAWFRAME 围绕窗口画一个框 
+　　SWP_FRAMECHANGED 发送一条WM_NCCALCSIZE消息进入窗口，即使窗口的大小没有发生改变。如果不指定这个参数，消息WM_NCCALCSIZE只有在窗口大小发生改变时才发送 
+　　SWP_HIDEWINDOW 隐藏窗口 
+　　SWP_NOACTIVATE 不激活窗口 
+　　SWP_NOCOPYBITS 屏蔽客户区域 
+　　SWP_NOMOVE 保持当前位置（X和Y参数将被忽略） 
+　　SWP_NOOWNERZORDER 不改变所有窗口的位置和排列顺序 
+　　SWP_NOREDRAW 窗口不自动重画 
+　　SWP_NOREPOSITION 与SWP_NOOWNERZORDER标记相同 
+　　SWP_NOSENDCHANGING 防止这个窗口接受WM_WINDOWPOSCHANGING消息 
+　　SWP_NOSIZE 保持当前大小（cx和cy会被忽略） 
+　　SWP_NOZORDER 保持窗口在列表的当前位置（hWndInsertAfter将被忽略） 
+　　SWP_SHOWWINDOW 显示窗口
+与它相关：
+　　MoveWindow，SetActiveWindow，SetForegroundWindow
+例子：
+　　SetWindowPos( Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE||SWP_NOSIZE);
+　　SetWindowPos( Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE||SWP_NOSIZE);
+  资料来自于csdn和bilibili大学
