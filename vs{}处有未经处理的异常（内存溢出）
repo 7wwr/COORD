@@ -1,0 +1,4 @@
+https://blog.csdn.net/minatosan/article/details/105555886
+VS的栈溢出了
+项目→最后一项→链接器→系统→堆栈保留大小
+调大点即可。
